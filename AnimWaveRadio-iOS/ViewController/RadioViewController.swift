@@ -38,7 +38,146 @@ class RadioViewController: UIViewController {
     
     // loading Animation
     // 각각의 뷰를 시간에 맞추어 변하게하는 뷰
-    func loadingAnimeView(){
+    func loadingAnimeView() {
+        let maxWidth = self.animeView.frame.width
+        let maxHeight = self.animeView.frame.height
+        
+        let radioRectangleView = UIView()
+        let subSquareView = UIView()
+        let inSquarelineView = UIView()
+        let inSquarelineView2 = UIView()
+        let inSquarelineView3 = UIView()
+        let inSquarelineView4 = UIView()
+        let inSquarelineView5 = UIView()
+        let circleView = UIView()
+        
+        var startX: Double = 0
+        var startY: Double = 0
+        var count: CGFloat = 0
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { timer in
+            self.animeView.addSubview(radioRectangleView)
+            if count <= 10 {
+                startX = maxWidth * (0.5 - 0.09/2)
+                startY = maxHeight * (0.65 - 0.05/2)
+                radioRectangleView.frame = CGRect(x: startX - maxWidth * 0.09 * count/2,
+                                                  y: startY - maxHeight * 0.05 * count/2,
+                                                  width: maxWidth * 0.09 * count,
+                                                  height: maxHeight * 0.05 * count)
+                radioRectangleView.layer.borderWidth = 5.0
+                radioRectangleView.layer.cornerRadius = 15.0
+                radioRectangleView.layer.borderColor = UIColor.black.cgColor
+                radioRectangleView.backgroundColor = UIColor.white
+            }
+            self.animeView.addSubview(subSquareView)
+            if count > 10 && count <= 15 {
+                subSquareView.frame = CGRect(x: maxWidth * 0.06 + maxWidth * 0.36 / 5 * (count - 10),
+                                             y: maxHeight * 0.416,
+                                             width: 25.0,
+                                             height: 25.0)
+                subSquareView.layer.cornerRadius = 12.5
+                subSquareView.layer.borderWidth = 5.0
+            }
+            if count > 15 && count <= 20 {
+                subSquareView.frame = CGRect(x: maxWidth * 0.42,
+                                             y: maxHeight * 0.416 + maxWidth * 0.36 / 5 * (count - 15),
+                                             width: 25.0,
+                                             height: 25.0)
+                subSquareView.layer.cornerRadius = 12.5
+                subSquareView.layer.borderWidth = 5.0
+            }
+            if count > 20 && count <= 25 {
+                subSquareView.frame = CGRect(x: maxWidth * 0.42 - maxWidth * 0.36 / 5 * (count - 20),
+                                             y: maxHeight * 0.776,
+                                             width: 25.0,
+                                             height: 25.0)
+                subSquareView.layer.cornerRadius = 12.5
+                subSquareView.layer.borderWidth = 5.0
+            }
+            if count > 25 && count <= 30 {
+                subSquareView.frame = CGRect(x: maxWidth * 0.06,
+                                             y: maxHeight * 0.776 - maxWidth * 0.36 / 5 * (count - 25),
+                                             width: 25.0,
+                                             height: 25.0)
+                subSquareView.layer.cornerRadius = 12.5
+                subSquareView.layer.borderWidth = 5.0
+            }
+            self.animeView.addSubview(subSquareView)
+            if count == 31 {
+                subSquareView.frame = CGRect(x: maxWidth * 0.06,
+                                             y: maxHeight * 0.416,
+                                             width: maxWidth * 0.416,
+                                             height: maxWidth * 0.416)
+            }
+            self.animeView.addSubview(inSquarelineView)
+            if count == 32 {
+                inSquarelineView.frame = CGRect(x: maxWidth * (0.06 + 0.058),
+                                                y: maxHeight * (0.416 + 0.059),
+                                                width: maxWidth * 0.3,
+                                                height: 10.0)
+                inSquarelineView.layer.cornerRadius = 5.0
+                inSquarelineView.layer.borderWidth = 3.0
+            }
+            self.animeView.addSubview(inSquarelineView2)
+            if count == 33 {
+                inSquarelineView2.frame = CGRect(x: maxWidth * (0.06 + 0.058),
+                                                y: maxHeight * (0.475 + 0.069),
+                                                width: maxWidth * 0.3,
+                                                height: 10.0)
+                inSquarelineView2.layer.cornerRadius = 5.0
+                inSquarelineView2.layer.borderWidth = 3.0
+            }
+            self.animeView.addSubview(inSquarelineView3)
+            if count == 34 {
+                inSquarelineView3.frame = CGRect(x: maxWidth * (0.06 + 0.058),
+                                                y: maxHeight * (0.544 + 0.069),
+                                                width: maxWidth * 0.3,
+                                                height: 10.0)
+                inSquarelineView3.layer.cornerRadius = 5.0
+                inSquarelineView3.layer.borderWidth = 3.0
+            }
+            self.animeView.addSubview(inSquarelineView4)
+            if count == 35 {
+                inSquarelineView4.frame = CGRect(x: maxWidth * (0.06 + 0.058),
+                                                y: maxHeight * (0.613 + 0.069),
+                                                width: maxWidth * 0.3,
+                                                height: 10.0)
+                inSquarelineView4.layer.cornerRadius = 5.0
+                inSquarelineView4.layer.borderWidth = 3.0
+            }
+            self.animeView.addSubview(inSquarelineView5)
+            if count == 36 {
+                inSquarelineView5.frame = CGRect(x: maxWidth * (0.06 + 0.058),
+                                                y: maxHeight * (0.682 + 0.069),
+                                                width: maxWidth * 0.3,
+                                                height: 10.0)
+                inSquarelineView5.layer.cornerRadius = 5.0
+                inSquarelineView5.layer.borderWidth = 3.0
+            }
+            self.animeView.addSubview(circleView)
+            if count > 36 && count <= 45 {
+                circleView.frame = CGRect(x: maxWidth * 0.52,
+                                          y: maxHeight * 0.416,
+                                          width: maxWidth * 0.33,
+                                          height: maxHeight * 0.416)
+                circleView.layer.cornerRadius = maxWidth * 0.33 / 2
+                circleView.layer.borderWidth = 5.0
+                circleView.layer.borderColor = UIColor.black.cgColor
+                circleView.backgroundColor = UIColor.white
+            }
+            
+            
+            count += 1
+            if count == 45 {
+                timer.invalidate()
+            }
+        })
+    }
+    
+    
+    
+    
+    func loadingAnimeView2(){
         // minWidth ~ MaxWidth로 Variation
         let circleMinWidth: CGFloat = 5.0
         let circleMaxWidth: CGFloat = 25.0
@@ -62,9 +201,9 @@ class RadioViewController: UIViewController {
                                        width: currentWidthAndHeight,
                                        height: currentWidthAndHeight)
             loadingView.layer.cornerRadius = currentWidthAndHeight / 2
-            loadingView.layer.borderWidth = currentWidthAndHeight / 24
-            loadingView.layer.borderColor = UIColor.yellow.cgColor
-            loadingView.backgroundColor = UIColor.red
+            loadingView.layer.borderWidth = 1.5
+            loadingView.layer.borderColor = UIColor.black.cgColor
+            loadingView.backgroundColor = UIColor.white
             
             i += 1
             if i > 24 && i <= 48{
