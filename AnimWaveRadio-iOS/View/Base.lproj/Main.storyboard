@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,31 +38,31 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="89.1 Mhz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzO-le-KxX" userLabel="FrequencyLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="89.1 Mhz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzO-le-KxX" userLabel="FrequencyLabel">
                                 <rect key="frame" x="65.5" y="54" width="283" height="30"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEe-Ng-Zza" userLabel="AnimeView">
-                                <rect key="frame" x="20" y="119" width="374" height="374"/>
+                                <rect key="frame" x="20" y="131" width="374" height="374"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cEe-Ng-Zza" secondAttribute="height" multiplier="1:1" id="tQv-NT-f8M"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uS-9P-TQb" userLabel="FrequencyCircularSlider" customClass="CircularSlider" customModule="HGCircularSlider">
-                                <rect key="frame" x="20" y="513" width="249" height="249"/>
+                                <rect key="frame" x="20" y="525" width="187" height="187"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.0 MHz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xg-kh-GgC" userLabel="valueLabel">
-                                        <rect key="frame" x="94.5" y="117.5" width="60.5" height="14.5"/>
+                                        <rect key="frame" x="63.5" y="86.5" width="60.5" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <color key="tintColor" name="AccentColor"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="1Xg-kh-GgC" firstAttribute="centerX" secondItem="5uS-9P-TQb" secondAttribute="centerX" id="8vw-t9-pv9"/>
                                     <constraint firstItem="1Xg-kh-GgC" firstAttribute="centerY" secondItem="5uS-9P-TQb" secondAttribute="centerY" id="ItT-cJ-7Ai"/>
@@ -74,10 +73,10 @@
                                         <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                        <color key="value" red="0.0" green="0.50588235290000005" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                        <color key="value" red="1" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
                                         <real key="value" value="5"/>
@@ -95,32 +94,82 @@
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackShadowColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="thumbLineWidth">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="backtrackLineWidth">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KBS1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4x-GX-1fc" userLabel="NameLabel">
-                                <rect key="frame" x="65.5" y="84" width="283" height="15"/>
+                                <rect key="frame" x="65.5" y="84" width="283" height="27"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZe-Uz-r1c" userLabel="VolumeSlider">
+                                <rect key="frame" x="205" y="674.5" width="191" height="38.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SZe-Uz-r1c" secondAttribute="height" multiplier="5:1" id="XwV-iz-mNw"/>
+                                </constraints>
+                            </slider>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="tKI-X0-ZaN" userLabel="ButtonStackView">
+                                <rect key="frame" x="206.5" y="592" width="187.5" height="62.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1l-d4-EQt" userLabel="BackwardButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="A1l-d4-EQt" secondAttribute="height" multiplier="1:1" id="o9C-FS-ZwM"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="backward.end" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybm-Mk-uxU" userLabel="PlayButton">
+                                        <rect key="frame" x="62.5" y="0.0" width="62.5" height="62.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Ybm-Mk-uxU" secondAttribute="height" multiplier="1:1" id="s9q-dg-fgw"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="playButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cdu-cf-72f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f15-xk-8cc" userLabel="ForwardButton">
+                                        <rect key="frame" x="125" y="0.0" width="62.5" height="62.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="f15-xk-8cc" secondAttribute="height" multiplier="1:1" id="ARo-IN-nwm"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="forward.end" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5uS-9P-TQb" secondAttribute="bottom" constant="100" id="578-Ua-J1J"/>
+                            <constraint firstItem="SZe-Uz-r1c" firstAttribute="trailing" secondItem="cEe-Ng-Zza" secondAttribute="trailing" id="067-70-yX7"/>
+                            <constraint firstItem="SZe-Uz-r1c" firstAttribute="leading" secondItem="5uS-9P-TQb" secondAttribute="trailing" id="3GR-0o-sCq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5uS-9P-TQb" secondAttribute="bottom" constant="150" id="578-Ua-J1J"/>
+                            <constraint firstItem="SZe-Uz-r1c" firstAttribute="top" secondItem="tKI-X0-ZaN" secondAttribute="bottom" constant="20" id="B06-jC-WU2"/>
                             <constraint firstItem="FEl-yQ-YNI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Dy3-XY-fLe"/>
+                            <constraint firstItem="SZe-Uz-r1c" firstAttribute="bottom" secondItem="5uS-9P-TQb" secondAttribute="bottom" id="Gyd-tT-89w"/>
                             <constraint firstItem="cEe-Ng-Zza" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HQR-R0-zlj"/>
                             <constraint firstItem="zEW-AN-Qww" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="OVJ-8U-bRb"/>
+                            <constraint firstItem="tKI-X0-ZaN" firstAttribute="leading" secondItem="SZe-Uz-r1c" secondAttribute="leading" constant="-0.5" id="PZb-B9-bWn"/>
                             <constraint firstItem="5uS-9P-TQb" firstAttribute="leading" secondItem="cEe-Ng-Zza" secondAttribute="leading" id="Q57-Ne-g6Z"/>
                             <constraint firstItem="FEl-yQ-YNI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="RdP-8z-mN9"/>
+                            <constraint firstItem="tKI-X0-ZaN" firstAttribute="trailing" secondItem="SZe-Uz-r1c" secondAttribute="trailing" id="Ytz-7S-gl4"/>
                             <constraint firstItem="dzO-le-KxX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aRv-xR-wgd"/>
                             <constraint firstItem="dzO-le-KxX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FEl-yQ-YNI" secondAttribute="trailing" id="fd9-NZ-iDV"/>
                             <constraint firstItem="n4x-GX-1fc" firstAttribute="top" secondItem="dzO-le-KxX" secondAttribute="bottom" id="gFa-KX-2bJ"/>
@@ -148,16 +197,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backward.end" catalog="system" width="128" height="120"/>
+        <image name="forward.end" catalog="system" width="128" height="120"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
-        <namedColor name="AccentColor">
-            <color red="0.10599999874830246" green="0.2199999988079071" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
