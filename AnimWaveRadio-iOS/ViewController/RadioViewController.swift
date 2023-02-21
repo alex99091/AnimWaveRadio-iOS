@@ -21,6 +21,7 @@ class RadioViewController: UIViewController {
     @IBOutlet weak var animeView: UIView!
     
     // Property
+    var timer = Timer()
     let audioPlayer = AVPlayer()
     var locationManger = CLLocationManager()
     var frequencyValue: Double = 0.0
@@ -28,36 +29,50 @@ class RadioViewController: UIViewController {
     // Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAnimeView()
         //findLocation()
         setUpCircularSliderIcon()
         setUpRadioRange()
+        
+        loadingAnimeView()
     }
     
-    // animation View
-    func setAnimeView(){
-        var viewArray = [[UIView]]()
-        for i in 0..<18 {
-            var horizon = [UIView]()
-            for j in 0..<18 {
-                var subView = UIView()
-                horizon.append(subView)
-                var subViewWidth = animeView.frame.width/20
-                subView.frame = CGRect(x: subViewWidth * CGFloat(i), y: subViewWidth * CGFloat(j), width: subViewWidth*0.85, height: subViewWidth*0.85)
-                subView.layer.cornerRadius = subViewWidth/2
-                subView.backgroundColor = .blue
+    // loading Animation
+    // 각각의 뷰를 시간에 맞추어 변하게하는 뷰
+    func loadingAnimeView(){
+        // minWidth ~ MaxWidth로 Variation
+        let circleMinWidth: CGFloat = 5.0
+        let circleMaxWidth: CGFloat = 25.0
+        // starting (x,y)
+        let startX = animeView.frame.width / 2
+        let startY = animeView.frame.height / 2
+        let loadingView = UIView()
+        animeView.addSubview(loadingView)
+        
+        // (x,y 좌표 변화값)
+        var i: Int = 0
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { timer in
+            
+            let changeX: Double = sin( (Double(i) * 15) * M_PI / 180 )
+            let changeY: Double = cos( (Double(i) * 15) * M_PI / 180 )
+            let currentWidthAndHeight = circleMinWidth + (circleMaxWidth - circleMinWidth) * CGFloat(i) / 24
+            let radius = self.animeView.frame.width / 4
+            
+            loadingView.frame = CGRect(x: startX + CGFloat(changeX) * radius - currentWidthAndHeight,
+                                       y: startY - CGFloat(changeY) * radius - currentWidthAndHeight,
+                                       width: currentWidthAndHeight,
+                                       height: currentWidthAndHeight)
+            loadingView.layer.cornerRadius = currentWidthAndHeight / 2
+            loadingView.layer.borderWidth = currentWidthAndHeight / 24
+            loadingView.layer.borderColor = UIColor.yellow.cgColor
+            loadingView.backgroundColor = UIColor.red
+            
+            i += 1
+            if i > 24 && i <= 48{
+                
+                timer.invalidate()
             }
-            viewArray.append(horizon)
-        }
-        for i in 0..<18 {
-            for j in 0..<18 {
-                animeView.addSubview(viewArray[i][j])
-            }
-        }
+        })
     }
-    
-    
-    
     
     // Method
     func setUpCircularSliderIcon(){
@@ -76,8 +91,5 @@ class RadioViewController: UIViewController {
         frequencyValue = frequencyValue == 0 ? 100 : frequencyValue
         valueLabel.text = String(format: "%.1f"+"MHz", frequencyValue)
     }
-    
-    
-    
 }
 
