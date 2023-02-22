@@ -187,6 +187,7 @@
                         <outlet property="animeView" destination="cEe-Ng-Zza" id="Df7-oj-TH0"/>
                         <outlet property="frequencySlider" destination="5uS-9P-TQb" id="JaO-sJ-iLD"/>
                         <outlet property="frequencyValueLabel" destination="n4x-GX-1fc" id="ZBl-0W-h8F"/>
+                        <outlet property="playButton" destination="Ybm-Mk-uxU" id="9Sg-PS-XGp"/>
                         <outlet property="radioNameLabel" destination="dzO-le-KxX" id="6Ow-xe-ilO"/>
                         <outlet property="valueLabel" destination="1Xg-kh-GgC" id="uXO-c4-8J2"/>
                     </connections>

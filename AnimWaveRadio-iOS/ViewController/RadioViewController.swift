@@ -19,14 +19,16 @@ class RadioViewController: UIViewController {
     @IBOutlet weak var valueLabel: UILabel!
     
     @IBOutlet weak var animeView: UIView!
+    @IBOutlet weak var playButton: UIButton!
     
     // Property
     var timer = Timer()
+    var waveImageView = UIImageView()
+    var tapCount = 0
     let audioPlayer = AVPlayer()
     var locationManger = CLLocationManager()
     var frequencyValue: Double = 0.0
     var playStatus: Bool = false
-    
     // Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -243,37 +245,33 @@ class RadioViewController: UIViewController {
     
     // PlayButton이 터치되면 AnimeView를 동작하는 함수
     func radioPlayStart() {
-        if playStatus == true {
-            print("radioPlay Activated")
-            var count = 0
-            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { timer in
-                var startX = self.animeView.frame.width * 0.06 + 40
-                var startY = (self.animeView.frame.height * 0.416) / 2
-                for i in 0...7 {
-                    let waveHalfCircle = UIView()
-                    let waveRectangle = UIView()
-                    let width = CGFloat(10.0 * Double(i))
-                    let height = CGFloat(10.0 * Double(i))
-                    startX += width
-                    waveHalfCircle.frame = CGRect(x: startX ,
-                                                  y: startY - height / 2,
-                                                  width: width,
-                                                  height: height)
-                    waveHalfCircle.layer.cornerRadius = width / 2
-                    waveHalfCircle.layer.borderWidth = 5.0
-                    waveHalfCircle.backgroundColor = UIColor.white
-                    self.animeView.addSubview(waveHalfCircle)
-                    waveRectangle.frame = CGRect(x: startX,
-                                                 y: startY - height / 2,
-                                                 width: width / 2,
-                                                 height: height)
-                    waveRectangle.backgroundColor = UIColor.white
-                    self.animeView.addSubview(waveRectangle)
+        if self.playStatus == true {
+            let startX = animeView.frame.width * 0.06 + 40
+            let endX = animeView.frame.width - animeView.frame.height * 0.208
+            let startY: CGFloat = 40.0
+            let oldFrame = CGRect(x: startX, y: startY, width: 30, height: 30)
+            let newFrame = CGRect(x: endX, y: animeView.frame.height * 0.104, width: animeView.frame.height * 0.208, height: animeView.frame.height * 0.208)
+            waveImageView.frame = oldFrame
+            waveImageView.image = UIImage(systemName: "dot.radiowaves.forward")
+            waveImageView.tintColor = .black
+            animeView.addSubview(waveImageView)
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { timer in
+                print("waveAnime Activated")
+                if self.playStatus == false {
+                    timer.invalidate()
+                    print("waveAnime DeActivated")
                 }
-                count += 1
-                count %= 7
-                print(count)
+                UIView.animate(withDuration: 1.9, animations: {
+                    self.waveImageView.frame = newFrame
+                }, completion: { finished in
+                    UIView.animate(withDuration: 0.0, animations: {
+                        self.waveImageView.frame = oldFrame
+                    })
+                })
             })
+        } else {
+            timer.invalidate()
+            print("waveAnime DeActivated")
         }
     }
     
@@ -298,11 +296,17 @@ class RadioViewController: UIViewController {
     // IBAction
     @IBAction func playButtonTouched(_ sender: Any) {
         print("play Button Touched")
-        playStatus = true
+        tapCount += 1
+        if tapCount % 2 == 1 {
+            playStatus = true
+            let image = UIImage(systemName: "pause.fill")
+            playButton.setImage(image, for: .normal)
+        } else {
+            playStatus = false
+            let image = UIImage(systemName: "play.fill")
+            playButton.setImage(image, for: .normal)
+        }
         radioPlayStart()
-        
     }
-    
-    
 }
 
