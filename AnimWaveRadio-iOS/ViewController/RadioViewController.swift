@@ -22,24 +22,38 @@ class RadioViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     
     // Property
-    var timer = Timer()
+    var timer: Timer?
     var waveImageView = UIImageView()
-    var tapCount = 0
     let audioPlayer = AVPlayer()
+    var loadRadio = LoadRadio()
+    var radioList = [RadioData]()
     var locationManger = CLLocationManager()
+    var locationList = ["latitude": 0.0, "longitude": 0.0]
+    var currentLocationName = ""
+    var locationStatus = false
     var frequencyValue: Double = 0.0
-    var playStatus: Bool = false
+    var animationStatus = false
+    
     // Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        findLocation()
         loadingAnimeView()
-        //findLocation()
         setUpCircularSliderIcon()
         setUpRadioRange()
+        changePlayButtonImage()
         
     }
     
-    // loading Animation
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(locationStatus)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.getRadioLists()
+            print("view will appear activated")
+        })
+    }
+    
+    // Method
     // 각각의 뷰를 애니매이션 동작으로 로딩하는 함수
     func loadingAnimeView() {
         let maxWidth = self.animeView.frame.width
@@ -60,8 +74,8 @@ class RadioViewController: UIViewController {
         let topRectangleView = UIView()
         let longRectangleView = UIView()
         
-        var startX: Double = 0
-        var startY: Double = 0
+        var startX: CGFloat = 0
+        var startY: CGFloat = 0
         var count: CGFloat = 0
         
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { timer in
@@ -244,8 +258,9 @@ class RadioViewController: UIViewController {
     }
     
     // PlayButton이 터치되면 AnimeView를 동작하는 함수
-    func radioPlayStart() {
-        if self.playStatus == true {
+    func waveAnimeStart() {
+        timer = Timer()
+        if animationStatus == true {
             let startX = animeView.frame.width * 0.06 + 40
             let endX = animeView.frame.width - animeView.frame.height * 0.208
             let startY: CGFloat = 40.0
@@ -257,7 +272,7 @@ class RadioViewController: UIViewController {
             animeView.addSubview(waveImageView)
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { timer in
                 print("waveAnime Activated")
-                if self.playStatus == false {
+                if self.animationStatus == false {
                     timer.invalidate()
                     print("waveAnime DeActivated")
                 }
@@ -269,13 +284,34 @@ class RadioViewController: UIViewController {
                     })
                 })
             })
-        } else {
-            timer.invalidate()
+        } else if playButton.isSelected == false {
+            timer?.invalidate()
+            timer = nil
             print("waveAnime DeActivated")
         }
     }
     
-    // Method
+    // playButton이 터치되면 playButton의 이미지가 변하는 함수
+    func changePlayButtonImage() {
+        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        playButton.setImage(UIImage(systemName: "pause.fill"), for: .selected)
+    }
+    
+    // Location정보로 해당 위치의 이름을 찾는 함수
+    func findLocationName() -> String {
+        guard let lat = locationList["latitude"] else { return "" }
+        guard let long = locationList["longitude"] else { return "" }
+        let locationName = SearchLocation.getLocation(lat, long)
+        return locationName
+    }
+    
+    // 현재 위치에 해당하는 라디오 정보를 가져오는 함수
+    func getRadioLists() {
+        currentLocationName = findLocationName()
+        radioList = loadRadio.loadRadioListsByLocation(currentLocationName) ?? []
+        print(radioList)
+    }
+    
     func setUpCircularSliderIcon(){
         frequencySlider.endThumbImage = UIImage(named: "sliderIcon")
     }
@@ -293,20 +329,45 @@ class RadioViewController: UIViewController {
         valueLabel.text = String(format: "%.1f"+"MHz", frequencyValue)
     }
     
+    
+    
     // IBAction
     @IBAction func playButtonTouched(_ sender: Any) {
         print("play Button Touched")
-        tapCount += 1
-        if tapCount % 2 == 1 {
-            playStatus = true
-            let image = UIImage(systemName: "pause.fill")
-            playButton.setImage(image, for: .normal)
-        } else {
-            playStatus = false
-            let image = UIImage(systemName: "play.fill")
-            playButton.setImage(image, for: .normal)
-        }
-        radioPlayStart()
+        playButton.isSelected.toggle()
+        animationStatus = playButton.isSelected ? true : false
+        waveAnimeStart()
     }
 }
 
+// 현재 위치 찾는 CLLocationManager
+extension RadioViewController: CLLocationManagerDelegate {
+    
+    func findLocation() {
+        locationManger.delegate = self
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            print("위치 서비스 On 상태")
+            locationManger.startUpdatingLocation() //위치 정보 받아오기 시작
+        } else {
+            print("위치 서비스 Off 상태")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("didUpdateLocations")
+        if let location = locations.first {
+            locationList.updateValue(location.coordinate.latitude, forKey: "latitude")
+            locationList.updateValue(location.coordinate.longitude, forKey: "longitude")
+            print("locationList: \(locationList)")
+            locationStatus = true
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+    
+}

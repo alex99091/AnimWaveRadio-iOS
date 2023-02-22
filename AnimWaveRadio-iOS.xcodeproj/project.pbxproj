@@ -14,8 +14,10 @@
 		262DF69829A26C47008878C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262DF69629A26C47008878C4 /* Main.storyboard */; };
 		262DF69A29A26C48008878C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 262DF69929A26C48008878C4 /* Assets.xcassets */; };
 		262DF69D29A26C48008878C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262DF69B29A26C48008878C4 /* LaunchScreen.storyboard */; };
-		26B606BB29A48B0900C59DB5 /* RadioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B606BA29A48B0900C59DB5 /* RadioData.swift */; };
-		26B606BE29A48D5500C59DB5 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B606BD29A48D5500C59DB5 /* LocationManager.swift */; };
+		269F114629A5F5A800FD9747 /* SearchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F114529A5F5A800FD9747 /* SearchLocation.swift */; };
+		269F114829A6253300FD9747 /* LoadRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F114729A6253300FD9747 /* LoadRadio.swift */; };
+		269F114A29A6632900FD9747 /* RadioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F114929A6632800FD9747 /* RadioData.swift */; };
+		26B606BB29A48B0900C59DB5 /* RadioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B606BA29A48B0900C59DB5 /* RadioResponse.swift */; };
 		26B606C129A4D2B600C59DB5 /* MusicSamplelists in Resources */ = {isa = PBXBuildFile; fileRef = 26B606C029A4D2B600C59DB5 /* MusicSamplelists */; };
 		26B606C329A4D3B200C59DB5 /* RadioMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 26B606C229A4D3B200C59DB5 /* RadioMockData.json */; };
 /* End PBXBuildFile section */
@@ -29,8 +31,10 @@
 		262DF69929A26C48008878C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		262DF69C29A26C48008878C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		262DF69E29A26C48008878C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26B606BA29A48B0900C59DB5 /* RadioData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioData.swift; sourceTree = "<group>"; };
-		26B606BD29A48D5500C59DB5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		269F114529A5F5A800FD9747 /* SearchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocation.swift; sourceTree = "<group>"; };
+		269F114729A6253300FD9747 /* LoadRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRadio.swift; sourceTree = "<group>"; };
+		269F114929A6632800FD9747 /* RadioData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioData.swift; sourceTree = "<group>"; };
+		26B606BA29A48B0900C59DB5 /* RadioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioResponse.swift; sourceTree = "<group>"; };
 		26B606C029A4D2B600C59DB5 /* MusicSamplelists */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MusicSamplelists; sourceTree = "<group>"; };
 		26B606C229A4D3B200C59DB5 /* RadioMockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RadioMockData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,7 +54,8 @@
 		261269E929A466DA003C303E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26B606BA29A48B0900C59DB5 /* RadioData.swift */,
+				26B606BA29A48B0900C59DB5 /* RadioResponse.swift */,
+				269F114929A6632800FD9747 /* RadioData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -74,6 +79,7 @@
 		262DF68F29A26C47008878C4 /* AnimWaveRadio-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				269C109929A5F2D500DAEEC7 /* API */,
 				26B606BF29A4D2AB00C59DB5 /* Source */,
 				26B606BC29A48D4600C59DB5 /* Extension */,
 				261269E929A466DA003C303E /* Model */,
@@ -112,10 +118,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		269C109929A5F2D500DAEEC7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				269F114529A5F5A800FD9747 /* SearchLocation.swift */,
+				269F114729A6253300FD9747 /* LoadRadio.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		26B606BC29A48D4600C59DB5 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				26B606BD29A48D5500C59DB5 /* LocationManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -210,9 +224,11 @@
 			files = (
 				262DF69529A26C47008878C4 /* RadioViewController.swift in Sources */,
 				262DF69129A26C47008878C4 /* AppDelegate.swift in Sources */,
-				26B606BE29A48D5500C59DB5 /* LocationManager.swift in Sources */,
+				269F114A29A6632900FD9747 /* RadioData.swift in Sources */,
+				269F114629A5F5A800FD9747 /* SearchLocation.swift in Sources */,
 				262DF69329A26C47008878C4 /* SceneDelegate.swift in Sources */,
-				26B606BB29A48B0900C59DB5 /* RadioData.swift in Sources */,
+				26B606BB29A48B0900C59DB5 /* RadioResponse.swift in Sources */,
+				269F114829A6253300FD9747 /* LoadRadio.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
