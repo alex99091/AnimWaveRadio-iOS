@@ -1,4 +1,4 @@
-# AIdea Skfetch
+# AnimWaveRadio
 
 ### App Feature
 
@@ -75,5 +75,49 @@ fixFrequency 함수를 이용하여 사용자가 선택한 주파수와 가장 �
 
 ### Problems
 
+1. API 가져오기
+```
+API 파싱을 할 때 라이브 스트리밍되는 라디오 주소를 가져오기 위해서는 
+전 세계 5만 개의 라디오를 스트리밍해주는 radio.co의 API를 사용해야 하는데, 
+이 API는 무료 체험이 불가능하고 사용하려면 최소 1달에 59달러를 지불해한다...... 
+그래서, 라디오 mockup 데이터를 JSON 파일로 만들고, 
+이 데이터를 사용하는 모델을 만들어서 로컬에서 Bundle URL을 사용해야 하는 방식을 사용했다. 
+뿐만아니라, 나의 현재위치를 라디오 목록을 요청하는 openapi를 사용할 때에는 
+"법정동코드"라는 변수를 요청 값의 primary 변수로 필요로 하기 때문에 
+CLLocation으로 받아온 위도, 경도를 법정동코드로 파싱하는 또다른 api를 사용해야해서 
+이 역시, 가상의 mock json을 직접 구현했다.
 
+이 때, 직접 만든 json file에 에러가 나서 한참을 고생했는데 알고보니 주석이 swift에서 사용하는 // // 형식이 json파일에 사용되면 에러가 난다는 사실을 알았다.
+```
+2. AVAudioPlayer 사용하기
+```
+AVAudioPlayer를 사용하여 로컬에 있는 음원 파일을 재생할 때, 
+AVAudioPlayer 빌드 에러가 계속 발생했는데... 
+URL 문제인지 확인하기 위해 bundle을 사용한 로컬 URL path를 변경했지만 그대로였고, 
+audioplayer instance의 생성문제 일수도 있다고 생각하여, 
+옵셔널 타입으로 선언하거나 함수에서 직접 선언하여 사용하였지만 해결되지 않았습니다. 
+또한, 시뮬레이터에서만 발생할 수 있는 가능성이 있다고 생각해서 
+실제 아이폰과 직접 연결해서 빌드해보았지만 문제가 해결되지 않았습니다. 
+그러다 알게 된 것은 Xcode 버전에 따라 mp4 파일을 AVAudioPlayer가 재생할 수 없는 경우가 있어 
+mp4 형식을 m4a로 변경하면 문제가 쉽게 해결된다는 것이었습니다. 파일을 변환해보니 손쉽게 해결되었습니다...
+```
+3. Circle View 구현하기
+```
+UIKit에서는 swiftui의 Circle()로 view를 생성할 수 있는것과 달리 
+직접적인 생성이 불가하기 때문에 UIView의 cornerRadius를 조절하여 원 모양의 뷰를 생성하였고, 
+이 원을 특정 포인트에 맞추어 회전시키기 위해서는 Pi를 활용한 수학적인 접근이 필요하기 때문에 
+extension class를 만들어 에니메이션 뷰를 직접 구현했습니다. 
+```
 
+### MVC Design
+```
+Model: RadioStation = 라디오 스테이션 정보를 담고 있는 모델
+       RadioStationAPI = 라디오 스테이션 API를 호출하고, 결과를 파싱하는 모델
+       LocationAPI = 현재 위치 API를 호출하고, 결과를 파싱하는 모델
+       FavoriteRadioManager = 즐겨찾기한 라디오 스테이션을 관리하는 모델
+View: AnimationView = 라디오 메인뷰에 보여지는 애니매이션 뷰
+      FavoriateView = 즐겨찾기한 라디오 스테이션 목록을 보여주는 뷰 
+      CircularView = 라디오 주파수를 선택하는 뷰
+      InformationView = 라디오의 상세정보를 보여주는 레이블 뷰
+Controller: RadioViewController = 라디오와 관련된 뷰와 모델을 관리하는 컨트롤러
+```
