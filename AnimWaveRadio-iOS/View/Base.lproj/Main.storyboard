@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,32 +17,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEl-yQ-YNI" userLabel="MoreButton">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEl-yQ-YNI" userLabel="MoreButton">
                                 <rect key="frame" x="10" y="59" width="55.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="SHb-bH-zci"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.0" green="0.50588235290000005" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <menu key="menu" id="mg1-7J-76E">
+                                    <children>
+                                        <command title="Item 1" id="gPB-3I-DvC"/>
+                                        <command title="Item 2" id="ytV-Ic-Era"/>
+                                    </children>
+                                </menu>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal" catalog="system">
+                                <buttonConfiguration key="configuration" style="plain" image="music.note.list" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                    <color key="baseForegroundColor" red="0.039215686274509803" green="0.23137254901960785" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="perferredListTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vxJ-hn-Uow"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEW-AN-Qww" userLabel="HeartButton">
                                 <rect key="frame" x="348.5" y="59" width="55.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Fgi-40-pzJ"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="hearButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wVe-aC-aaR"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="89.1 Mhz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzO-le-KxX" userLabel="FrequencyLabel">
                                 <rect key="frame" x="65.5" y="54" width="283" height="30"/>
+                                <color key="tintColor" red="0.039215686270000001" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.039215686270000001" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEe-Ng-Zza" userLabel="AnimeView">
@@ -54,14 +69,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uS-9P-TQb" userLabel="FrequencyCircularSlider" customClass="CircularSlider" customModule="HGCircularSlider">
                                 <rect key="frame" x="20" y="525" width="187" height="187"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.0 MHz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xg-kh-GgC" userLabel="valueLabel">
-                                        <rect key="frame" x="63.5" y="86.5" width="60.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="89.1 MHz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xg-kh-GgC" userLabel="valueLabel">
+                                        <rect key="frame" x="65" y="85.5" width="57" height="16"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <color key="textColor" red="0.039215686270000001" green="0.23137254900000001" blue="0.16815154409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="1Xg-kh-GgC" firstAttribute="centerX" secondItem="5uS-9P-TQb" secondAttribute="centerX" id="8vw-t9-pv9"/>
@@ -70,13 +85,13 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" red="0.83137254901960778" green="0.71764705882352942" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" red="0.20000000000000001" green="0.11372549019607843" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
                                         <real key="value" value="5"/>
@@ -100,14 +115,14 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="backtrackLineWidth">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KBS1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4x-GX-1fc" userLabel="NameLabel">
                                 <rect key="frame" x="65.5" y="84" width="283" height="27"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.039215686274509803" green="0.23137254901960785" blue="0.18823529411764706" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.34999999999999998" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZe-Uz-r1c" userLabel="VolumeSlider">
@@ -115,6 +130,8 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SZe-Uz-r1c" secondAttribute="height" multiplier="5:1" id="XwV-iz-mNw"/>
                                 </constraints>
+                                <color key="minimumTrackTintColor" red="0.20000000000000001" green="0.11372549019607843" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="maximumTrackTintColor" red="0.83137254901960778" green="0.71764705882352942" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="changeVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="dR3-rU-fuV"/>
                                 </connections>
@@ -130,6 +147,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="backward.end" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                            <color key="baseForegroundColor" red="0.039215686270000001" green="0.23137254900000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="backButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="szY-rL-GxF"/>
@@ -137,12 +155,14 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybm-Mk-uxU" userLabel="PlayButton">
                                         <rect key="frame" x="62.5" y="0.0" width="62.5" height="62.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ybm-Mk-uxU" secondAttribute="height" multiplier="1:1" id="s9q-dg-fgw"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                            <color key="baseForegroundColor" red="0.039215686274509803" green="0.23137254901960785" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="playButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cdu-cf-72f"/>
@@ -156,6 +176,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="forward.end" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                            <color key="baseForegroundColor" red="0.039215686270000001" green="0.23137254900000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="nextButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RAi-p9-QC5"/>
@@ -163,6 +184,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUp-Pv-Yvf" userLabel="InformationLabel">
+                                <rect key="frame" x="30" y="796" width="354" height="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -170,6 +197,8 @@
                             <constraint firstItem="SZe-Uz-r1c" firstAttribute="trailing" secondItem="cEe-Ng-Zza" secondAttribute="trailing" id="067-70-yX7"/>
                             <constraint firstItem="SZe-Uz-r1c" firstAttribute="leading" secondItem="5uS-9P-TQb" secondAttribute="trailing" id="3GR-0o-sCq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5uS-9P-TQb" secondAttribute="bottom" constant="150" id="578-Ua-J1J"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kUp-Pv-Yvf" secondAttribute="trailing" constant="30" id="5Vl-K8-rws"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kUp-Pv-Yvf" secondAttribute="bottom" constant="50" id="9LU-es-itl"/>
                             <constraint firstItem="SZe-Uz-r1c" firstAttribute="top" secondItem="tKI-X0-ZaN" secondAttribute="bottom" constant="20" id="B06-jC-WU2"/>
                             <constraint firstItem="FEl-yQ-YNI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Dy3-XY-fLe"/>
                             <constraint firstItem="SZe-Uz-r1c" firstAttribute="bottom" secondItem="5uS-9P-TQb" secondAttribute="bottom" id="Gyd-tT-89w"/>
@@ -178,6 +207,7 @@
                             <constraint firstItem="tKI-X0-ZaN" firstAttribute="leading" secondItem="SZe-Uz-r1c" secondAttribute="leading" constant="-0.5" id="PZb-B9-bWn"/>
                             <constraint firstItem="5uS-9P-TQb" firstAttribute="leading" secondItem="cEe-Ng-Zza" secondAttribute="leading" id="Q57-Ne-g6Z"/>
                             <constraint firstItem="FEl-yQ-YNI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="RdP-8z-mN9"/>
+                            <constraint firstItem="kUp-Pv-Yvf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="XGz-rY-YMQ"/>
                             <constraint firstItem="tKI-X0-ZaN" firstAttribute="trailing" secondItem="SZe-Uz-r1c" secondAttribute="trailing" id="Ytz-7S-gl4"/>
                             <constraint firstItem="dzO-le-KxX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aRv-xR-wgd"/>
                             <constraint firstItem="dzO-le-KxX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FEl-yQ-YNI" secondAttribute="trailing" id="fd9-NZ-iDV"/>
@@ -196,6 +226,9 @@
                         <outlet property="animeView" destination="cEe-Ng-Zza" id="Df7-oj-TH0"/>
                         <outlet property="frequencySlider" destination="5uS-9P-TQb" id="JaO-sJ-iLD"/>
                         <outlet property="frequencyValueLabel" destination="n4x-GX-1fc" id="ZBl-0W-h8F"/>
+                        <outlet property="heartButton" destination="zEW-AN-Qww" id="68H-Ze-DRt"/>
+                        <outlet property="informationLabel" destination="kUp-Pv-Yvf" id="ggr-1Y-PKa"/>
+                        <outlet property="moreButton" destination="FEl-yQ-YNI" id="TsV-QR-yqy"/>
                         <outlet property="playButton" destination="Ybm-Mk-uxU" id="9Sg-PS-XGp"/>
                         <outlet property="radioNameLabel" destination="dzO-le-KxX" id="6Ow-xe-ilO"/>
                         <outlet property="valueLabel" destination="1Xg-kh-GgC" id="uXO-c4-8J2"/>
@@ -211,7 +244,7 @@
         <image name="backward.end" catalog="system" width="128" height="120"/>
         <image name="forward.end" catalog="system" width="128" height="120"/>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

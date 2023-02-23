@@ -18,9 +18,11 @@ class RadioViewController: UIViewController {
     @IBOutlet weak var frequencySlider: CircularSlider!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var volumeSlider: UISlider!
-    
     @IBOutlet weak var animeView: UIView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var heartButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var informationLabel: UILabel!
     
     // Property
     var timer: Timer?
@@ -28,6 +30,8 @@ class RadioViewController: UIViewController {
     var loadRadio = LoadRadio()
     var radioList = [RadioData]()
     var valueList = [Double]()
+    var heartList = [RadioData: Bool]()
+    var heartListUpdate = false
     var locationManger = CLLocationManager()
     var locationList = ["latitude": 0.0, "longitude": 0.0]
     var currentLocationName = ""
@@ -42,14 +46,16 @@ class RadioViewController: UIViewController {
         findLocation()
         playAnimationView(animeView)
         changePlayButtonImage()
+        setupLikeLists()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(locationStatus)
         self.getRadioLists()
         self.setUpCircularSlider()
+        self.setUpHeartList()
+        print(heartListUpdate)
         print("view will appear activated")
-        print(valueList)
     }
     
     // Method
@@ -78,7 +84,7 @@ class RadioViewController: UIViewController {
         
         frequencySlider.minimumValue = valueList.min()!
         frequencySlider.maximumValue = valueList.max()!
-        frequencySlider.endPointValue = valueList.max()!
+        frequencySlider.endPointValue = valueList.min()!
         frequencySlider.addTarget(self, action: #selector(updateFrequencyValue), for: .valueChanged)
     }
     
@@ -93,6 +99,29 @@ class RadioViewController: UIViewController {
     func changePlayButtonImage() {
         playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         playButton.setImage(UIImage(systemName: "pause.fill"), for: .selected)
+    }
+    
+    // heartButton이 터치되면 playButton의 이미지가 변하는 함수
+    func changeHeartButtonImage() {
+        var key = RadioData()
+        
+        for radio in radioList {
+            if radio.title!.uppercased() == frequencyValueLabel.text {
+                key = radio
+            }
+        }
+        if heartList[key] == false {
+            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        } else {
+            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
+    }
+    
+    // heartList 정보 생성
+    func setUpHeartList() {
+        for radio in radioList {
+            heartList.updateValue(false, forKey: radio)
+        }
     }
     
     // 해당 주파수에 라디오가 없으면 가장 가까운 주파수로 frequencyValue를 fix하는 함수
@@ -125,6 +154,7 @@ class RadioViewController: UIViewController {
         print("prevButtonTapped - frequencyValue = \(frequencyValue)")
         changeSliderValue(frequencyValue)
     }
+    
     // 라디오의 현재 주파수에서 바로 전의 주파수로 움직이는 nextFrequency 함수
     func moveToNextFrequency() {
         if valueList.count == 0 { return }
@@ -140,6 +170,7 @@ class RadioViewController: UIViewController {
         print("nextButtonTapped - frequencyValue = \(frequencyValue)")
         changeSliderValue(frequencyValue)
     }
+    
     // sliderValue를 바뀐 주파수 값에 따라서 변경하는 함수
     func changeSliderValue(_ inputValue: Double) {
         // 1. 슬라이더의 값을 현재 주파수 값으로 바꾼다.
@@ -160,9 +191,10 @@ class RadioViewController: UIViewController {
         }
         return nil
     }
-    // 라디오 재생하는 함수
+    
+    // 라디오 재생
     func streamRadio() {
-        guard let fileName = getStreamingUrl(fixFrequency()) else { fatalError() }
+        guard let fileName = getStreamingUrl(fixFrequency()) else { return }
         print(fileName)
         let extensionName = "m4a"
         // forResource: 파일 이름(확장자 제외) , withExtension: 확장자(mp3, wav 등) 입력
@@ -179,9 +211,11 @@ class RadioViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+    // 라디오 일시정지
     func pauseRadio() {
         audioPlayer?.pause()
     }
+    // 라디오 정지
     func stopRadio() {
         audioPlayer?.stop()
     }
@@ -199,26 +233,91 @@ class RadioViewController: UIViewController {
         frequencyValueLabel.text = radioName.uppercased()
     }
     
+    // 좋아요를 누른 리스트 만들기
+    func setupLikeLists() {
+        let configuration = UIImage.SymbolConfiguration(pointSize: 25)
+        let imageIcon = UIImage(systemName: "heart.square.fill",
+                                withConfiguration: configuration)?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        var menuItems = [UIAction]()
+        for (key, value) in heartList {
+            if value == true {
+                let eachMenu = UIAction(title: key.title!.uppercased(),
+                                        subtitle: String(format: "%.1f"+"MHz", Double(key.frequency!)!),
+                                        image: imageIcon,
+                                        handler: { _ in  self.changeByHeartSelected(key.title!) })
+                menuItems.append(eachMenu)
+            }
+        }
+        print("menuItem.count - \(menuItems.count)")
+        let menu = UIMenu(title: "Like Lists", options: [], children: menuItems)
+        print("menu - \(menu)")
+        moreButton.menu = menu
+    }
+    
+    // 왼쪽 moreButton에서 좋아요를 누르면 해당 정보로 바뀌는 함수
+    func changeByHeartSelected(_ selectedKey: String) {
+        for radio in radioList {
+            if radio.title! == selectedKey {
+                changeSliderValue(Double(radio.frequency!)!)
+                changeLabel()
+                reloadInputViews()
+            }
+        }
+    }
+    
+    // IBAction
+    // 좋아요 저장한 목록들이 터치되었을 때
+    @IBAction func perferredListTapped(_ sender: Any) {
+        print("preferredListTouched - start")
+        setupLikeLists()
+        reloadInputViews()
+        print("preferredListTouched - done")
+    }
+    
+    
+    // 상단에 하트버튼이 눌리면 해당 정보를 업데이트
+    @IBAction func hearButtonTapped(_ sender: Any) {
+        var key = RadioData()
+        
+        for radio in radioList {
+            if radio.title!.uppercased() == frequencyValueLabel.text {
+                key = radio
+                if heartList[key] == false {
+                    heartList.updateValue(true, forKey: key)
+                } else {
+                    heartList.updateValue(false, forKey: key)
+                }
+            }
+        }
+        changeHeartButtonImage()
+        heartListUpdate = true
+        setupLikeLists()
+    }
+    
     // 아래 슬라이더로 볼륨 조절하는 함수
     @IBAction func changeVolume(_ sender: Any) {
         audioPlayer?.volume = volumeSlider.value
     }
     
-    
-    
-    // IBAction
+    // 이전버튼 터치
     @IBAction func backButtonTouched(_ sender: Any) {
         playButton.isSelected = false
         stopRadio()
         moveToPreviousFrequency()
+        changeLabel()
+        changeHeartButtonImage()
     }
     
+    // 다음 버튼 터치
     @IBAction func nextButtonTouched(_ sender: Any) {
         playButton.isSelected = false
         stopRadio()
         moveToNextFrequency()
+        changeLabel()
+        changeHeartButtonImage()
     }
     
+    // 재생 버튼 터치
     @IBAction func playButtonTouched(_ sender: Any) {
         print("play Button Touched")
         playButton.isSelected.toggle()
@@ -226,13 +325,8 @@ class RadioViewController: UIViewController {
         playWaveAnimation()
         changeSliderValue(fixFrequency())
         changeLabel()
-        
-        if playButton.isSelected {
-            streamRadio()
-        }
-        else {
-            pauseRadio()
-        }
+        informationLabelAnimate()
+        playButton.isSelected ? streamRadio() : pauseRadio()
     }
 }
 
@@ -253,11 +347,9 @@ extension RadioViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations")
         if let location = locations.first {
             locationList.updateValue(location.coordinate.latitude, forKey: "latitude")
             locationList.updateValue(location.coordinate.longitude, forKey: "longitude")
-            print("locationList: \(locationList)")
             locationStatus = true
         }
     }

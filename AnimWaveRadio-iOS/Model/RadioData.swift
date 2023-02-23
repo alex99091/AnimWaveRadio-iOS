@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RadioData: Codable {
+struct RadioData: Codable, Hashable {
     var frequency: String?
     var title: String?
     var streamingUrl: String?
