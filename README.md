@@ -28,8 +28,8 @@
 ### How to run
 
 ```
-> cd AIdeaSkfetch-iOS
-> open AIdeaSkfetch-iOS.xcodeproj
+> cd AnimWaveRadio-iOS
+> open AnimWaveRadio-iOS.xcodeproj
 > ...
 ```
 
@@ -111,14 +111,22 @@ extension class를 만들어 에니메이션 뷰를 직접 구현했습니다.
 ```
 
 ### MVC Design
+
+Model
 ```
-Model: RadioStation = 라디오 스테이션 정보를 담고 있는 모델
-       RadioStationAPI = 라디오 스테이션 API를 호출하고, 결과를 파싱하는 모델
-       LocationAPI = 현재 위치 API를 호출하고, 결과를 파싱하는 모델
-       FavoriteRadioManager = 즐겨찾기한 라디오 스테이션을 관리하는 모델
-View: AnimationView = 라디오 메인뷰에 보여지는 애니매이션 뷰
-      FavoriateView = 즐겨찾기한 라디오 스테이션 목록을 보여주는 뷰 
-      CircularView = 라디오 주파수를 선택하는 뷰
-      InformationView = 라디오의 상세정보를 보여주는 레이블 뷰
-Controller: RadioViewController = 라디오와 관련된 뷰와 모델을 관리하는 컨트롤러
+RadioStation = 라디오 스테이션 정보를 담고 있는 모델
+RadioStationAPI = 라디오 스테이션 API를 호출하고, 결과를 파싱하는 모델
+LocationAPI = 현재 위치 API를 호출하고, 결과를 파싱하는 모델
+FavoriteRadioManager = 즐겨찾기한 라디오 스테이션을 관리하는 모델
+```
+View
+```
+AnimationView = 라디오 메인뷰에 보여지는 애니매이션 뷰
+FavoriateView = 즐겨찾기한 라디오 스테이션 목록을 보여주는 뷰 
+CircularView = 라디오 주파수를 선택하는 뷰
+InformationView = 라디오의 상세정보를 보여주는 레이블 뷰
+```
+Controller
+```
+RadioViewController = 라디오와 관련된 뷰와 모델을 관리하는 컨트롤러
 ```
