@@ -70,7 +70,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,7 +100,7 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="backtrackLineWidth">
-                                        <real key="value" value="5"/>
+                                        <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -110,11 +110,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZe-Uz-r1c" userLabel="VolumeSlider">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.34999999999999998" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZe-Uz-r1c" userLabel="VolumeSlider">
                                 <rect key="frame" x="205" y="674.5" width="191" height="38.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SZe-Uz-r1c" secondAttribute="height" multiplier="5:1" id="XwV-iz-mNw"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="changeVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="dR3-rU-fuV"/>
+                                </connections>
                             </slider>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="tKI-X0-ZaN" userLabel="ButtonStackView">
                                 <rect key="frame" x="206.5" y="592" width="187.5" height="62.5"/>
@@ -128,6 +131,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="backward.end" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="szY-rL-GxF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybm-Mk-uxU" userLabel="PlayButton">
                                         <rect key="frame" x="62.5" y="0.0" width="62.5" height="62.5"/>
@@ -151,6 +157,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="forward.end" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="nextButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RAi-p9-QC5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -190,6 +199,7 @@
                         <outlet property="playButton" destination="Ybm-Mk-uxU" id="9Sg-PS-XGp"/>
                         <outlet property="radioNameLabel" destination="dzO-le-KxX" id="6Ow-xe-ilO"/>
                         <outlet property="valueLabel" destination="1Xg-kh-GgC" id="uXO-c4-8J2"/>
+                        <outlet property="volumeSlider" destination="SZe-Uz-r1c" id="rNc-Jf-o4o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

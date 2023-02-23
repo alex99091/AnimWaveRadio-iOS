@@ -1,0 +1,33 @@
+[
+    {"location": "Seoul",
+        "radios":
+        [
+            {"frequency":"93.1","title":"kbs1","streamingUrl":"free1"},
+            {"frequency":"89.1","title":"kbs2","streamingUrl":"free2"},
+            {"frequency":"104.5","title":"ebs","streamingUrl":"free3"},
+            {"frequency":"95.9","title":"mbc","streamingUrl":"free4"},
+            {"frequency":"107.7","title":"sbs","streamingUrl":"free5"},
+            {"frequency":"94.5","title":"ytn","streamingUrl":"free6"},
+            {"frequency":"98.1","title":"cbs","streamingUrl":"free7"},
+            {"frequency":"101.9","title":"bbs","streamingUrl":"free8"},
+            {"frequency":"101.1","title":"K-Army","streamingUrl":"free9"},
+            {"frequency":"105.3","title":"pbc","streamingUrl":"free10"},
+            {"frequency":"95.1","title":"tbn","streamingUrl":"free11"}
+        ]
+    },
+    {"location": "Busan",
+        "radios":
+        [
+            {"frequency":"103.7","title":"kbs1","streamingUrl":"free1"},
+            {"frequency":"97.1","title":"kbs2","streamingUrl":"free2"},
+            {"frequency":"107.7","title":"ebs","streamingUrl":"free3"},
+            {"frequency":"95.9","title":"mbc1","streamingUrl":"free4"},
+            {"frequency":"99.9","title":"sbs1","streamingUrl":"free5"},
+            {"frequency":"102.9","title":"cbs","streamingUrl":"free7"},
+            {"frequency":"89.9","title":"bbs","streamingUrl":"free8"},
+            {"frequency":"101.1","title":"pbc","streamingUrl":"free10"},
+            {"frequency":"94.9","title":"tbn","streamingUrl":"free11"}
+        ]
+    }
+]
+

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		261269F129A472EE003C303E /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 261269F029A472EE003C303E /* HGCircularSlider */; };
 		262DF69129A26C47008878C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262DF69029A26C47008878C4 /* AppDelegate.swift */; };
 		262DF69329A26C47008878C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262DF69229A26C47008878C4 /* SceneDelegate.swift */; };
 		262DF69529A26C47008878C4 /* RadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262DF69429A26C47008878C4 /* RadioViewController.swift */; };
@@ -18,8 +17,20 @@
 		269F114829A6253300FD9747 /* LoadRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F114729A6253300FD9747 /* LoadRadio.swift */; };
 		269F114A29A6632900FD9747 /* RadioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F114929A6632800FD9747 /* RadioData.swift */; };
 		26B606BB29A48B0900C59DB5 /* RadioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B606BA29A48B0900C59DB5 /* RadioResponse.swift */; };
-		26B606C129A4D2B600C59DB5 /* MusicSamplelists in Resources */ = {isa = PBXBuildFile; fileRef = 26B606C029A4D2B600C59DB5 /* MusicSamplelists */; };
 		26B606C329A4D3B200C59DB5 /* RadioMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 26B606C229A4D3B200C59DB5 /* RadioMockData.json */; };
+		26B6C8C829A76CFA00A8393C /* RadioVC+AnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6C8C729A76CFA00A8393C /* RadioVC+AnimeView.swift */; };
+		26B6C8D629A76D5300A8393C /* free3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8CB29A76D5300A8393C /* free3.m4a */; };
+		26B6C8D729A76D5300A8393C /* free2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8CC29A76D5300A8393C /* free2.m4a */; };
+		26B6C8D829A76D5300A8393C /* free1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8CD29A76D5300A8393C /* free1.m4a */; };
+		26B6C8D929A76D5300A8393C /* free5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8CE29A76D5300A8393C /* free5.m4a */; };
+		26B6C8DA29A76D5300A8393C /* free4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8CF29A76D5300A8393C /* free4.m4a */; };
+		26B6C8DB29A76D5300A8393C /* free6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8D029A76D5300A8393C /* free6.m4a */; };
+		26B6C8DC29A76D5300A8393C /* free7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8D129A76D5300A8393C /* free7.m4a */; };
+		26B6C8DD29A76D5300A8393C /* free9.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8D229A76D5300A8393C /* free9.m4a */; };
+		26B6C8DE29A76D5300A8393C /* free8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8D329A76D5300A8393C /* free8.m4a */; };
+		26B6C8DF29A76D5300A8393C /* free11.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8D429A76D5300A8393C /* free11.m4a */; };
+		26B6C8E029A76D5300A8393C /* free10.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 26B6C8D529A76D5300A8393C /* free10.m4a */; };
+		26B6C8E329A76D7C00A8393C /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 26B6C8E229A76D7C00A8393C /* HGCircularSlider */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +46,19 @@
 		269F114729A6253300FD9747 /* LoadRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRadio.swift; sourceTree = "<group>"; };
 		269F114929A6632800FD9747 /* RadioData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioData.swift; sourceTree = "<group>"; };
 		26B606BA29A48B0900C59DB5 /* RadioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioResponse.swift; sourceTree = "<group>"; };
-		26B606C029A4D2B600C59DB5 /* MusicSamplelists */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MusicSamplelists; sourceTree = "<group>"; };
 		26B606C229A4D3B200C59DB5 /* RadioMockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RadioMockData.json; sourceTree = "<group>"; };
+		26B6C8C729A76CFA00A8393C /* RadioVC+AnimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RadioVC+AnimeView.swift"; sourceTree = "<group>"; };
+		26B6C8CB29A76D5300A8393C /* free3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free3.m4a; sourceTree = "<group>"; };
+		26B6C8CC29A76D5300A8393C /* free2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free2.m4a; sourceTree = "<group>"; };
+		26B6C8CD29A76D5300A8393C /* free1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free1.m4a; sourceTree = "<group>"; };
+		26B6C8CE29A76D5300A8393C /* free5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free5.m4a; sourceTree = "<group>"; };
+		26B6C8CF29A76D5300A8393C /* free4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free4.m4a; sourceTree = "<group>"; };
+		26B6C8D029A76D5300A8393C /* free6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free6.m4a; sourceTree = "<group>"; };
+		26B6C8D129A76D5300A8393C /* free7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free7.m4a; sourceTree = "<group>"; };
+		26B6C8D229A76D5300A8393C /* free9.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free9.m4a; sourceTree = "<group>"; };
+		26B6C8D329A76D5300A8393C /* free8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free8.m4a; sourceTree = "<group>"; };
+		26B6C8D429A76D5300A8393C /* free11.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free11.m4a; sourceTree = "<group>"; };
+		26B6C8D529A76D5300A8393C /* free10.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = free10.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				261269F129A472EE003C303E /* HGCircularSlider in Frameworks */,
+				26B6C8E329A76D7C00A8393C /* HGCircularSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,8 +101,9 @@
 		262DF68F29A26C47008878C4 /* AnimWaveRadio-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				26B6C8CA29A76D5300A8393C /* MusicSampleLists */,
+				26B6C8C929A76D3E00A8393C /* Data */,
 				269C109929A5F2D500DAEEC7 /* API */,
-				26B606BF29A4D2AB00C59DB5 /* Source */,
 				26B606BC29A48D4600C59DB5 /* Extension */,
 				261269E929A466DA003C303E /* Model */,
 				262DF6A729A32E73008878C4 /* View */,
@@ -130,17 +153,35 @@
 		26B606BC29A48D4600C59DB5 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				26B6C8C729A76CFA00A8393C /* RadioVC+AnimeView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		26B606BF29A4D2AB00C59DB5 /* Source */ = {
+		26B6C8C929A76D3E00A8393C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				26B606C029A4D2B600C59DB5 /* MusicSamplelists */,
 				26B606C229A4D3B200C59DB5 /* RadioMockData.json */,
 			);
-			path = Source;
+			path = Data;
+			sourceTree = "<group>";
+		};
+		26B6C8CA29A76D5300A8393C /* MusicSampleLists */ = {
+			isa = PBXGroup;
+			children = (
+				26B6C8CB29A76D5300A8393C /* free3.m4a */,
+				26B6C8CC29A76D5300A8393C /* free2.m4a */,
+				26B6C8CD29A76D5300A8393C /* free1.m4a */,
+				26B6C8CE29A76D5300A8393C /* free5.m4a */,
+				26B6C8CF29A76D5300A8393C /* free4.m4a */,
+				26B6C8D029A76D5300A8393C /* free6.m4a */,
+				26B6C8D129A76D5300A8393C /* free7.m4a */,
+				26B6C8D229A76D5300A8393C /* free9.m4a */,
+				26B6C8D329A76D5300A8393C /* free8.m4a */,
+				26B6C8D429A76D5300A8393C /* free11.m4a */,
+				26B6C8D529A76D5300A8393C /* free10.m4a */,
+			);
+			path = MusicSampleLists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,7 +201,7 @@
 			);
 			name = "AnimWaveRadio-iOS";
 			packageProductDependencies = (
-				261269F029A472EE003C303E /* HGCircularSlider */,
+				26B6C8E229A76D7C00A8393C /* HGCircularSlider */,
 			);
 			productName = "AnimWaveRadio-iOS";
 			productReference = 262DF68D29A26C47008878C4 /* AnimWaveRadio-iOS.app */;
@@ -191,7 +232,7 @@
 			);
 			mainGroup = 262DF68429A26C47008878C4;
 			packageReferences = (
-				261269EF29A472EE003C303E /* XCRemoteSwiftPackageReference "HGCircularSlider" */,
+				26B6C8E129A76D7C00A8393C /* XCRemoteSwiftPackageReference "HGCircularSlider" */,
 			);
 			productRefGroup = 262DF68E29A26C47008878C4 /* Products */;
 			projectDirPath = "";
@@ -207,11 +248,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B6C8D929A76D5300A8393C /* free5.m4a in Resources */,
 				262DF69D29A26C48008878C4 /* LaunchScreen.storyboard in Resources */,
+				26B6C8DE29A76D5300A8393C /* free8.m4a in Resources */,
+				26B6C8D629A76D5300A8393C /* free3.m4a in Resources */,
 				262DF69A29A26C48008878C4 /* Assets.xcassets in Resources */,
-				26B606C129A4D2B600C59DB5 /* MusicSamplelists in Resources */,
+				26B6C8E029A76D5300A8393C /* free10.m4a in Resources */,
 				262DF69829A26C47008878C4 /* Main.storyboard in Resources */,
+				26B6C8DB29A76D5300A8393C /* free6.m4a in Resources */,
+				26B6C8DA29A76D5300A8393C /* free4.m4a in Resources */,
+				26B6C8DC29A76D5300A8393C /* free7.m4a in Resources */,
+				26B6C8DD29A76D5300A8393C /* free9.m4a in Resources */,
+				26B6C8D829A76D5300A8393C /* free1.m4a in Resources */,
 				26B606C329A4D3B200C59DB5 /* RadioMockData.json in Resources */,
+				26B6C8DF29A76D5300A8393C /* free11.m4a in Resources */,
+				26B6C8D729A76D5300A8393C /* free2.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +275,7 @@
 			files = (
 				262DF69529A26C47008878C4 /* RadioViewController.swift in Sources */,
 				262DF69129A26C47008878C4 /* AppDelegate.swift in Sources */,
+				26B6C8C829A76CFA00A8393C /* RadioVC+AnimeView.swift in Sources */,
 				269F114A29A6632900FD9747 /* RadioData.swift in Sources */,
 				269F114629A5F5A800FD9747 /* SearchLocation.swift in Sources */,
 				262DF69329A26C47008878C4 /* SceneDelegate.swift in Sources */,
@@ -448,7 +500,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		261269EF29A472EE003C303E /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
+		26B6C8E129A76D7C00A8393C /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HamzaGhazouani/HGCircularSlider";
 			requirement = {
@@ -459,9 +511,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		261269F029A472EE003C303E /* HGCircularSlider */ = {
+		26B6C8E229A76D7C00A8393C /* HGCircularSlider */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 261269EF29A472EE003C303E /* XCRemoteSwiftPackageReference "HGCircularSlider" */;
+			package = 26B6C8E129A76D7C00A8393C /* XCRemoteSwiftPackageReference "HGCircularSlider" */;
 			productName = HGCircularSlider;
 		};
 /* End XCSwiftPackageProductDependency section */
